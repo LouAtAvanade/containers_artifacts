@@ -1,0 +1,13 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: api-dev
+  namespace: api
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: api-dev-access
+subjects:
+- kind: Group
+  namespace: api
+  name: fbf57536-4220-45ac-96b3-a52b85e13ff8
