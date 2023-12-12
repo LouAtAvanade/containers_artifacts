@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: userprofile
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -37,6 +37,7 @@ spec:
   selector:
     app: userprofile
   ports:
-  - protocol: TCP
+  - name: userprofile-service
+    protocol: TCP
     port: 80
     targetPort: 80

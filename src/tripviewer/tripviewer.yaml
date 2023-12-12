@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: tripviewer
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -27,6 +27,11 @@ spec:
           requests:
             cpu: "0.5"
             memory: "256Mi"
+        env:
+        - name: "TRIPS_API_ENDPOINT"
+          value: "http://trips-service/api/trips"
+        - name: "USERPROFILE_API_ENDPOINT"
+          value: "http://userprofile-service/api/user"
 ---
 
 apiVersion: v1

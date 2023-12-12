@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: poi
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -27,6 +27,29 @@ spec:
           requests:
             cpu: "0.5"
             memory: "256Mi"
+        env:
+        - name: "SQL_SERVER"
+          value: "sqlservergwq5120.database.windows.net"
+        - name: "SQL_USER"
+          value: "sqladmingWq5120"
+        - name: "SQL_DB_NAME"
+          value: "mydrivingDB"
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "Production"
+        - name: "CONFIG_FILES_PATH"
+          value: "/secrets"
+        - name: "DOTNET_SYSTEM_GLOBALIZATION_INVARIANT"
+          value: "false"
+        - name: "WEB_SERVER_BASE_URI"
+          value: "http://0.0.0.0"
+        - name: "WEB_PORT"
+          value: "80"
+        - name: "SQL_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+             name: sql-password
+             key: sql-password
+
 ---
 
 apiVersion: v1
@@ -37,6 +60,7 @@ spec:
   selector:
     app: poi
   ports:
-  - protocol: TCP
+  - name: poi-service 
+    protocol: TCP
     port: 80
     targetPort: 80

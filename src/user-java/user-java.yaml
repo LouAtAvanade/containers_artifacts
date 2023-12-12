@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: user-java
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -37,6 +37,7 @@ spec:
   selector:
     app: user-java
   ports:
-  - protocol: TCP
+  - name: user-java-service
+    protocol: TCP
     port: 80
     targetPort: 80

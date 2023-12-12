@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: trips
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -37,6 +37,7 @@ spec:
   selector:
     app: trips
   ports:
-  - protocol: TCP
+  - name: trips-service
+    protocol: TCP
     port: 80
     targetPort: 80
