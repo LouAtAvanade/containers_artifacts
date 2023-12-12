@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: web
   name: tripviewer
   labels:
     app: tripviewer
@@ -8,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: tripviewer
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:

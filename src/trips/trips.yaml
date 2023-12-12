@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: api
   name: trips
   labels:
     app: trips
@@ -8,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: trips
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
