@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poi
+  labels:
+    app: poi
+spec:
+  selector:
+    matchLabels:
+      app: poi
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: poi
+    spec:
+      containers:
+      - image: "registrygwq5120.azurecr.io/poi:1.1"
+        name: poi-image
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: poi-service
+spec:
+  selector:
+    app: poi
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
