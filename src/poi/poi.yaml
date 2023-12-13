@@ -46,10 +46,7 @@ spec:
         - name: "WEB_PORT"
           value: "80"
         - name: "SQL_PASSWORD"
-          valueFrom:
-            secretKeyRef:
-             name: sql-password
-             key: sql-password
+          value: "vG8xc9Ug2"
 
 ---
 
